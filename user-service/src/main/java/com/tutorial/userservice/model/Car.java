@@ -3,8 +3,8 @@ package com.tutorial.userservice.model;
 import lombok.*;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class Car {
     private String brand;
     private String model;
