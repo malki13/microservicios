@@ -33,3 +33,7 @@ spring:
           uri: lb://gestion-service
           predicates:
             - Path=/gestion/**
+        - id: administracion-service
+          uri: lb://administracion-service
+          predicates:
+            - Path=/administracion/**

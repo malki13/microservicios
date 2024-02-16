@@ -25,6 +25,19 @@ public class GatewayController {
 //            return ResponseEntity.notFound().build();
         return ResponseEntity.ok("Hola"+String.valueOf(id));
     }
+
+    @GetMapping("/getOne/{gatewayId}")
+    /*@ApiOperation(value = "Obtiene un Gateway por su id", authorizations = {@Authorization(value = "JWT")})
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Gateway no encontrado"),
+            @ApiResponse(code = 403, message = "No autorizado para consumir el servicio")
+    })*/
+    public ResponseEntity<Response> getOne(
+            /*@ApiParam(value = "ID del gateway", required = true)*/ @PathVariable("gatewayId") Integer gatewayId
+    ) {
+        return new ResponseEntity<>(new Response(HttpStatus.OK.toString(), "Gateway encontrado", gatewayService.getOne(gatewayId).get()), HttpStatus.OK);
+    }
     @GetMapping("/getAll")
     public ResponseEntity<Page<GatewayInfo>> findAll(@PageableDefault(size = 10, page = 0) Pageable pageable) {
         return new ResponseEntity<>(gatewayService.findAll(pageable), HttpStatus.OK);
