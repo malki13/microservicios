@@ -3,6 +3,7 @@ package com.telecom.gestionservice.gateway.service;
 import com.telecom.gestionservice.gateway.data.dto.GatewayDTO;
 import com.telecom.gestionservice.gateway.data.info.GatewayInfo;
 import com.telecom.gestionservice.gateway.data.read.GatewayRead;
+import org.apache.coyote.BadRequestException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,7 +14,7 @@ public interface GatewayService {
 
     Optional<GatewayRead> getOne(Integer id);
 
-    GatewayRead save(Integer empresaId, GatewayDTO gatewayDTO);
+    GatewayRead save(Integer empresaId, GatewayDTO gatewayDTO) throws BadRequestException;
 
     boolean delete(Integer id);
 
