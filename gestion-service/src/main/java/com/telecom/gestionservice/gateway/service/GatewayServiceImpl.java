@@ -6,7 +6,8 @@ import com.telecom.gestionservice.gateway.data.info.GatewayInfo;
 import com.telecom.gestionservice.gateway.data.read.GatewayRead;
 import com.telecom.gestionservice.gateway.mapper.GatewayMapper;
 import com.telecom.gestionservice.gateway.repository.GatewayCrudRepository;
-import org.apache.coyote.BadRequestException;
+//import org.apache.coyote.BadRequestException;
+import com.telecom.gestionservice.response.error.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,11 +28,21 @@ public class GatewayServiceImpl implements GatewayService{
 
     @Override
     public Optional<GatewayRead> getOne(Integer id) {
-        return Optional.empty();
+        Optional<Gateway> gatewayDB = gatewayCrudRepository.findById(id);
+        if (gatewayDB.isPresent()) {
+//            Empresa empresa = getEmpresa(gatewayDB.get().getIdEmpresa());
+//            System.out.println("Se encuentra");
+//            System.out.println(empresa.getIden());
+//            System.out.println(empresa.getNumGateways());
+//            System.out.println(empresa.getNumDevices());
+            return gatewayCrudRepository.findById(id).map(gateway -> mapper.toGatewayRead(gateway));
+//            return gatewayDB.map(this::getGatewayData);
+        }
+        throw new BadRequestException("Gateway con id " + id + " no encontrado");
     }
 
     @Override
-    public GatewayRead save(Integer empresaId, GatewayDTO gatewayDTO) throws BadRequestException {
+    public GatewayRead save(Integer empresaId, GatewayDTO gatewayDTO) {
         Optional<Gateway> gatewayDB = gatewayCrudRepository.findByIdGateway(gatewayDTO.getIdGateway());
         if (!gatewayDB.isPresent()) {
             Integer numGateways = gatewayCrudRepository.countByIdEmpresa(empresaId);

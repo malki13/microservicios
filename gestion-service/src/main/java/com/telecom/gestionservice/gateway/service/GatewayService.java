@@ -14,7 +14,7 @@ public interface GatewayService {
 
     Optional<GatewayRead> getOne(Integer id);
 
-    GatewayRead save(Integer empresaId, GatewayDTO gatewayDTO) throws BadRequestException;
+    GatewayRead save(Integer empresaId, GatewayDTO gatewayDTO);
 
     boolean delete(Integer id);
 
