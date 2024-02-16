@@ -1,9 +1,6 @@
 package com.tutorial.userservice.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 //import javax.persistence.Entity;
@@ -12,7 +9,8 @@ import lombok.*;
 //import javax.persistence.Id;
 
 @Entity
-@Data
+//@Data
+@Table(name = "tb_user")
 //@NoArgsConstructor
 //@AllArgsConstructor
 public class User {
