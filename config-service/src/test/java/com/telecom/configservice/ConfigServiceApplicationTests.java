@@ -1,4 +1,4 @@
-package com.tutorial.configservice;
+package com.telecom.configservice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
