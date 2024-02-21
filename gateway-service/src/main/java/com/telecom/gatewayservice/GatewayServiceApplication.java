@@ -1,4 +1,4 @@
-package com.tutorial.gatewayservice;
+package com.telecom.gatewayservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
