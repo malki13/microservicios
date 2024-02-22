@@ -1,10 +1,14 @@
 package com.telecom.administracionservice.empresa.data.entity;
 
 import com.telecom.administracionservice.interventor.data.entity.Interventor;
+import com.telecom.administracionservice.usuario.data.entity.Usuario;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_Empresas")
@@ -31,6 +35,9 @@ public class Empresa implements Serializable {
     @OneToOne
     @JoinColumn(name = "emp_int", unique = true)
     private Interventor interventor;
+    @OneToMany(mappedBy = "empresa", fetch = FetchType.LAZY)
+    @Fetch(value = FetchMode.SUBSELECT)
+    private List<Usuario> usuarios;
 
     public Empresa() {
     }
@@ -89,5 +96,13 @@ public class Empresa implements Serializable {
 
     public void setInterventor(Interventor interventor) {
         this.interventor = interventor;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 }

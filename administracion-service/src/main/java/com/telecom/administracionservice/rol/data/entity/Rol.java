@@ -1,6 +1,7 @@
 package com.telecom.administracionservice.rol.data.entity;
 
 import com.telecom.administracionservice.estatus.data.entity.Estatus;
+import com.telecom.administracionservice.usuario.data.entity.Usuario;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -33,6 +34,11 @@ public class Rol implements Serializable {
 
     @Column(name = "rol_feeli", columnDefinition= "TIMESTAMP WITH TIME ZONE")
     private LocalDateTime deletedAt;
+
+    @ManyToMany(mappedBy = "rols", fetch = FetchType.LAZY, cascade = {
+            CascadeType.MERGE
+    })
+    private List<Usuario> usuarios;
 
     public Rol() {
     }
@@ -91,5 +97,13 @@ public class Rol implements Serializable {
 
     public void setDeletedAt(LocalDateTime deletedAt) {
         this.deletedAt = deletedAt;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 }
