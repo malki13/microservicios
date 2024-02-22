@@ -1,10 +1,11 @@
-package com.telecom.administracionservice.interventor.data.dto;
+package com.telecom.administracionservice.interventor.data.read;
 
 import java.util.Date;
 
-public class InterventorDTO {
+public class InterventorRead {
     private Integer iden;
     private String codigo;
+//    private InterventorTipoRead interventorTipo;
     private String nombre;
     private String apellido;
     private String direccion;
@@ -14,9 +15,8 @@ public class InterventorDTO {
     private Date fechaNacimiento;
     private String nombreImagen;
     private String imagen;
-    private String base64;
 
-    public InterventorDTO() {
+    public InterventorRead() {
     }
 
     public Integer getIden() {
@@ -105,13 +105,5 @@ public class InterventorDTO {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
-    }
-
-    public String getBase64() {
-        return base64;
-    }
-
-    public void setBase64(String base64) {
-        this.base64 = base64;
     }
 }
