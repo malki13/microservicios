@@ -2,11 +2,12 @@ package com.telecom.administracionservice.estatus.data.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tb_Estatus")
-public class Estatus {
+public class Estatus implements Serializable{
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Column(name = "est_iden", nullable = false)
